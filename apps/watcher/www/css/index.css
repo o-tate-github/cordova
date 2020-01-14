@@ -1,0 +1,285 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+@font-face {
+ font-family: 'Noto Sans CJK JP';
+ font-style: normal;
+ font-weight: 400;
+ src: local('Noto Sans CJK JP Regular'),
+			url(/res/font/NotoSansJP-Regular.otf) format('opentype');
+}
+@font-face {
+ font-family: 'Noto Sans CJK JP';
+ font-style: bolder;
+ font-weight: 700;
+ src: local('Noto Sans CJK JP Bold'),
+			url(/res/font/NotoSansJP-Bold.otf) format('opentype');
+}
+@font-face {
+ font-family: 'FlopDesign Font';
+ font-style: normal;
+ font-weight: 400;
+ src: local('01FLOPDESIGN Regular'),
+			url(/res/font/FlopDesignFONT.otf) format('opentype');
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+body {
+	/* prevent callout to copy image, etc when tap to hold */
+  -webkit-touch-callout: none;
+	/* prevent webkit from resizing text to fit */
+  -webkit-text-size-adjust: none;
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+  -webkit-user-select: none;
+	background-color:#f4f4f4;
+  background-image:linear-gradient(90deg, #f4f4f4 0%, #c7c7c7 51%);
+  background-image:-webkit-linear-gradient(top, #f4f4f4 0%, #c7c7c7 51%);
+  background-image:-ms-linear-gradient(top, #f4f4f4 0%, #c7c7c7 51%);
+  background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #f4f4f4),
+        color-stop(0.51, #c7c7c7)
+    );
+    background-attachment:fixed;
+		width:100vw;
+    height:100vh;
+    margin:0;
+    padding:0;
+		font-family: 'FlopDesign Font', 'Noto Sans CJK JP', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:3vh;
+}
+
+.app {
+	width: 90vw;
+	height: 90vh;
+	margin: 0;
+	padding: 5vh 5vw;
+  text-align: center;
+}
+
+h1 {
+	width: 100%;
+	color:#e05299;
+	font-size:5vh;
+  font-weight: normal;
+	margin: 0 0 3vh 0;
+	padding: 0;
+  text-align:center;
+}
+
+.question-content {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.question-title {
+	width: 100%;
+	height: 9vh;
+	margin: 0 0 3vh 0;
+	padding: 1vh 0;
+	border-radius: 2vh;
+	-webkit-border-radius: 2vh;
+	color: #ffffff;
+  /*background-color: #4b946a;*/
+	background-color: #e05299;
+	font-size: 3vh;
+  font-weight: normal;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.question-number {
+	width: 12vw;
+	margin: 0 0 0 4vw;
+	padding: 0;
+	float: left;
+	text-align: left;
+}
+
+.question-sentence {
+	width: 68vw;
+	margin: 0 4vw 0 2vw;
+	padding: 0;
+	float: right;
+}
+
+.question-text {
+	clear: both;
+	text-align: left;
+}
+
+.thought {
+	width: 80vw;
+	height: 3vh;
+	margin: 0;
+	padding: 0 5vw 3vh 5vw;
+}
+
+.thought-less {
+	width: 40vw;
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-size: 3vh;
+	text-align: left;
+}
+
+.thought-much {
+	width: 40vw;
+	float: right;
+	margin: 0;
+	padding: 0;
+	font-size: 3vh;
+	text-align: right;
+}
+
+.levels {
+	clear: both;
+	width: 80vw;
+	height: 3vh;
+	margin: 0;
+	padding: 3vh 5vw;
+}
+
+.level-box {
+	width: 16vw;
+	height: 3vh;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.level-radio {
+	width: 6vw;
+	height: 6vw;
+	margin: 0;
+	padding: 0 0 0 2vw;
+}
+
+.level-text {
+	width: 6vw;
+	height: 6vw;
+	margin: 0;
+	padding: 0 2vw 0 0;
+	font-size: 6vw;
+}
+
+.button {
+	margin: 2vh 2vw;
+	padding: 0.5vh 2vw;
+	font-size: 3vh;
+}
+
+.result-content {
+	width: 80vw;
+	margin: 0;
+	padding: 0;
+}
+
+.footer {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color:#ffffff;
+		background-color:#c982a6;
+		font-size: 2vh;
+    margin: 3vh 0 0 0;
+    padding: 1.5vh 0;
+}
+
+
+#deviceready {
+	margin-top: 20px;
+}
+
+.blink {
+		animation:fade 3000ms infinite;
+		-webkit-animation:fade 3000ms infinite;
+}
+
+.main-content {
+	margin: 0;
+	padding: 0;
+}
+
+.show-content {
+	margin: 0;
+	padding: 0;
+	opacity: 1.0;
+}
+.hide-content {
+	margin: 0;
+	padding: 0;
+	animation:fadeOut 1000ms ease 125ms;
+	-webkit-animation:fadeOut 1000ms ease 125ms;
+}
+
+
+
+
+
+.result {
+	margin: auto;
+	padding: 20px;
+	font-size: 120px;
+	font-weight: normal;
+	color:#206040;
+}
+
+.comment {
+	width: 75%;
+	margin: auto;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: normal;
+	color:#206040;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Measurement</title>
+    </head>
+    <body>
+        <div class="app">
+					<div id="app">
+						<h1>
+							今日の気持ち指数♪
+					  </h1>
+						<div v-bind:class="animationMode">
+						<div v-if="hasComputed == false">
+							<h2>
+								Q.{{questionList[counter].id}}<br />{{ questionList[counter].text }}
+					  	</h2>
+							<div>
+								<span class="level-line" v-for="level in answerLevels">
+										<input class="level-radio" type="radio" name="choice" v-bind:value="level.value" v-model="questionList[counter].answer">
+										<span class="level-text">{{ level.text }}</span>
+									</input>
+								</span>
+							</div>
+							<button class= "button"
+								v-if="counter > 0" v-on:click="transition('previousQuestion')">
+								前の質問
+							</button>
+							<button class= "button"
+								v-if="counter < (questionList.length - 1)"
+								v-on:click="transition('nextQuestion')">
+								次の質問
+							</button>
+							<button class= "button"
+								v-if="counter == (questionList.length - 1)" v-on:click="transition('viewResult')">
+								結果をみる
+							</button>
+						</div>
+						<div v-else>
+							<h2>あなたの今日の気持ち指数は・・・！</h2>
+							<div class="result">
+								{{ result }}
+							</div>
+							<div class="comment">
+								{{ comments[Math.round(result)].text }}
+							</div>
+							<button class= "button"	v-on:click="transition('tryAgain')">
+								もう一度やってみる
+							</button>
+						</div>
+						</div>
+					</div>
+          <div id="deviceready">
+            <p class="event listening">Wait for a while...</p>
+            <p class="event received">This application is made by O.Tatesawa.</p>
+          </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+				<script type="text/javascript" src="js/vue.js"></script>
+				<script type="text/javascript" src="js/vueapp.js"></script>
+				<script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
